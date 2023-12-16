@@ -6,7 +6,7 @@ import chalk from 'chalk';
 import Command, { Flags } from '../../base';
 import { GetIssueQuery } from '../../generated/_documents';
 import { render } from '../../components';
-import { issueArgs, getIssueId, IssueArgs } from '../../utils/issueId';
+import { issueArgs, getIssueId } from '../../utils/issueId';
 
 dayjs.extend(relativeTime);
 
@@ -31,6 +31,7 @@ export default class IssueIndex extends Command {
     description: Flags.boolean({ char: 'd', description: 'Show issue description' }),
     comments: Flags.boolean({ char: 'c', description: 'Show issue comments' }),
     open: Flags.boolean({ char: 'o', description: 'Open issue in web browser' }),
+    branch: Flags.boolean({ char: 'b', description: 'Show branch name' }),
   };
 
   renderIssueComments(issue: Issue) {
@@ -41,13 +42,13 @@ export default class IssueIndex extends Command {
     const dim = chalk.dim;
 
     for (const comment of issue.comments!.nodes.reverse()) {
-      const author = comment.user.displayName;
+      const author = comment?.user?.displayName ?? '';
       const markdown = render
         .Markdown(`${comment.body}`)
         .replace(/\n\n$/, '')
         .padEnd(author.length + 6);
 
-      const authorLabel = ` ${comment.user.displayName} `;
+      const authorLabel = ` ${comment.user?.displayName} `;
       let commentBox = boxen(markdown, boxenOptions);
 
       const lengthOfBox = commentBox.match(/╭.*╮/)![0].length;
@@ -70,6 +71,11 @@ export default class IssueIndex extends Command {
     this.log(boxen(render.Markdown(markdown), boxenOptions));
   }
 
+  returnIssueBranch(issue: Issue) {
+    const branchName = issue.branchName;
+    this.log(branchName);
+  }
+
   async run() {
     const { flags, args } = await this.parse(IssueIndex);
 
@@ -90,6 +96,11 @@ export default class IssueIndex extends Command {
 
     if (flags.description) {
       this.renderIssueDescription(issue);
+      return;
+    }
+
+    if (flags.branch) {
+      this.returnIssueBranch(issue);
       return;
     }
 

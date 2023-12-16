@@ -3,8 +3,8 @@
 A CLI for [Linear](https://linear.app/) that allows you to quickly view, create and update issues.
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/@egcli/lr.svg)](https://npmjs.org/package/@egcli/lr)
-[![Downloads/week](https://img.shields.io/npm/dw/@egcli/lr.svg)](https://npmjs.org/package/@egcli/lr)
+[![Version](https://img.shields.io/npm/v/@tkudlicka/lr.svg)](https://npmjs.org/package/@tkudlicka/lr)
+[![Downloads/week](https://img.shields.io/npm/dw/@tkudlicka/lr.svg)](https://npmjs.org/package/@tkudlicka/lr)
 [![License](https://img.shields.io/npm/l/linear-cli.svg)](https://github.com/egodon/linear-cli/blob/master/package.json)
 
 > **Warning**
@@ -16,13 +16,13 @@ A CLI for [Linear](https://linear.app/) that allows you to quickly view, create 
 ###### Install with npm
 
 ```
-  $ npm install -g @egcli/lr
+  $ npm install -g @tkudlicka/lr
 ```
 
 ###### Install with yarn
 
 ```
-  $ yarn global add @egcli/lr
+  $ yarn global add @tkudlicka/lr
 ```
 
 ###### Setup API key
@@ -32,7 +32,6 @@ A CLI for [Linear](https://linear.app/) that allows you to quickly view, create 
 ```
 
 # Commands
-
 <!-- commands -->
 * [`lr cache:refresh`](#lr-cacherefresh)
 * [`lr cache:show`](#lr-cacheshow)
@@ -60,7 +59,7 @@ USAGE
   $ lr cache:refresh
 ```
 
-_See code: [src/commands/cache/refresh.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/cache/refresh.ts)_
+_See code: [src/commands/cache/refresh.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/cache/refresh.ts)_
 
 ## `lr cache:show`
 
@@ -74,7 +73,7 @@ OPTIONS
   -p, --pretty  Pretty print
 ```
 
-_See code: [src/commands/cache/show.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/cache/show.ts)_
+_See code: [src/commands/cache/show.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/cache/show.ts)_
 
 ## `lr config:delete`
 
@@ -83,7 +82,7 @@ USAGE
   $ lr config:delete
 ```
 
-_See code: [src/commands/config/delete.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/config/delete.ts)_
+_See code: [src/commands/config/delete.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/config/delete.ts)_
 
 ## `lr config:show`
 
@@ -92,7 +91,7 @@ USAGE
   $ lr config:show
 ```
 
-_See code: [src/commands/config/show.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/config/show.ts)_
+_See code: [src/commands/config/show.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/config/show.ts)_
 
 ## `lr init`
 
@@ -103,7 +102,7 @@ USAGE
   $ lr init
 ```
 
-_See code: [src/commands/init.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/init.ts)_
+_See code: [src/commands/init.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/init.ts)_
 
 ## `lr issue ISSUEID`
 
@@ -114,6 +113,7 @@ USAGE
   $ lr issue ISSUEID
 
 OPTIONS
+  -b, --branch       Show branch name
   -c, --comments     Show issue comments
   -d, --description  Show issue description
   -o, --open         Open issue in web browser
@@ -127,7 +127,7 @@ EXAMPLES
   $ lr issue 14 (looks in default team)
 ```
 
-_See code: [src/commands/issue/index.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/issue/index.ts)_
+_See code: [src/commands/issue/index.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/issue/index.ts)_
 
 ## `lr issue:create`
 
@@ -145,7 +145,7 @@ ALIASES
   $ lr c
 ```
 
-_See code: [src/commands/issue/create.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/issue/create.ts)_
+_See code: [src/commands/issue/create.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/issue/create.ts)_
 
 ## `lr issue:list`
 
@@ -176,7 +176,7 @@ ALIASES
   $ lr l
 ```
 
-_See code: [src/commands/issue/list.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/issue/list.ts)_
+_See code: [src/commands/issue/list.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/issue/list.ts)_
 
 ## `lr issue:search [QUERY]`
 
@@ -191,7 +191,7 @@ ALIASES
   $ lr s
 ```
 
-_See code: [src/commands/issue/search.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/issue/search.ts)_
+_See code: [src/commands/issue/search.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/issue/search.ts)_
 
 ## `lr issue:start ISSUEID`
 
@@ -209,7 +209,7 @@ ALIASES
   $ lr s
 ```
 
-_See code: [src/commands/issue/start.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/issue/start.ts)_
+_See code: [src/commands/issue/start.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/issue/start.ts)_
 
 ## `lr issue:stop ISSUEID`
 
@@ -226,7 +226,7 @@ ALIASES
   $ lr stop
 ```
 
-_See code: [src/commands/issue/stop.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/issue/stop.ts)_
+_See code: [src/commands/issue/stop.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/issue/stop.ts)_
 
 ## `lr issue:update ISSUEID`
 
@@ -244,7 +244,7 @@ ALIASES
   $ lr u
 ```
 
-_See code: [src/commands/issue/update.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/issue/update.ts)_
+_See code: [src/commands/issue/update.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/issue/update.ts)_
 
 ## `lr teams:show`
 
@@ -258,7 +258,7 @@ OPTIONS
   -m, --mine  Pretty print
 ```
 
-_See code: [src/commands/teams/show.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/teams/show.ts)_
+_See code: [src/commands/teams/show.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/teams/show.ts)_
 
 ## `lr workspace:add`
 
@@ -269,7 +269,7 @@ USAGE
   $ lr workspace:add
 ```
 
-_See code: [src/commands/workspace/add.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/workspace/add.ts)_
+_See code: [src/commands/workspace/add.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/workspace/add.ts)_
 
 ## `lr workspace:current`
 
@@ -280,7 +280,7 @@ USAGE
   $ lr workspace:current
 ```
 
-_See code: [src/commands/workspace/current.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/workspace/current.ts)_
+_See code: [src/commands/workspace/current.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/workspace/current.ts)_
 
 ## `lr workspace:switch`
 
@@ -290,6 +290,5 @@ Switch to another workspace
 USAGE
   $ lr workspace:switch
 ```
-
-_See code: [src/commands/workspace/switch.ts](https://github.com/evangodon/linear-cli/blob/v0.17.0/src/commands/workspace/switch.ts)_
+_See code: [src/commands/workspace/switch.ts](https://github.com/tkudlicka/linear-cli/blob/v0.19.0/src/commands/workspace/switch.ts)_
 <!-- commandsstop -->

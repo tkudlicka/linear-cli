@@ -1,7 +1,7 @@
 {
-  "name": "@egcli/lr",
+  "name": "@tkudlicka/lr",
   "description": "",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "author": "Evan Godon @egodon",
   "bin": {
     "linear": "bin/run",
@@ -11,10 +11,11 @@
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "build": "npm run prepack && npm run postpack",
     "version": "oclif-dev readme && git add README.md",
     "generate": "graphql-codegen --config codegen.yml"
   },
-  "bugs": "https://github.com/egodon/linear-cli/issues",
+  "bugs": "https://github.com/tkudlicka/linear-cli/issues",
   "dependencies": {
     "@linear/sdk": "^1.8.4",
     "@oclif/core": "^1.1.2",
@@ -63,7 +64,7 @@
     "/npm-shrinkwrap.json",
     "oclif.manifest.json"
   ],
-  "homepage": "https://github.com/egodon/linear-cli",
+  "homepage": "https://github.com/tkudlicka/linear-cli",
   "keywords": [
     "oclif"
   ],
@@ -85,6 +86,6 @@
       }
     }
   },
-  "repository": "evangodon/linear-cli",
+  "repository": "tkudlicka/linear-cli",
   "types": "lib/index.d.ts"
 }
