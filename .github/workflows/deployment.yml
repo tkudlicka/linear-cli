@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies 🔧
         run: npm install
       - name: Build package 🏗
-        run: npm build
+        run: npm run build
       - name: Publish package on NPM 📦
         run: npm publish
         env:
