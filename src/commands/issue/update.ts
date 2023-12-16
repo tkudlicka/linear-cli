@@ -75,7 +75,7 @@ export default class IssueUpdate extends Command {
       },
     ]);
 
-    await this.linear.issueUpdate(issueId, { title });
+    await this.linear.updateIssue(issueId, { title });
 
     this.log('');
     this.log(`Issue ${chalk.magenta(issueId)} has been updated with title \`${title}\``);
@@ -97,7 +97,7 @@ export default class IssueUpdate extends Command {
       },
     ]);
 
-    await this.linear.issueUpdate(issueId, { description });
+    await this.linear.updateIssue(issueId, { description });
     this.log('');
     this.log(`The description of issue ${issue.identifier} has been updated`);
   }
@@ -134,7 +134,7 @@ export default class IssueUpdate extends Command {
       this.error('Did not find that state.');
     }
 
-    await this.linear.issueUpdate(issueId, { stateId: newState.id });
+    await this.linear.updateIssue(issueId, { stateId: newState.id });
 
     this.log('');
     this.success(
@@ -148,8 +148,7 @@ export default class IssueUpdate extends Command {
     const issueId = getIssueId(args);
 
     if (!flags.property) {
-      await this.promptForProperty(issueId);
-      return;
+      return await this.promptForProperty(issueId);
     }
 
     this.runUpdateMethod(issueId, flags.property as Property);

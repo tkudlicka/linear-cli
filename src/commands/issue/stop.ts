@@ -60,7 +60,7 @@ export default class IssueStop extends Command {
 
     const spinner = ora('Updating issue').start();
 
-    await this.linear.issueUpdate(issue.id, { stateId: nextStateId, ...unassign });
+    await this.linear.updateIssue(issue.id, { stateId: nextStateId, ...unassign });
 
     const nextState = issue.team.states.nodes.find((state) => state.id === nextStateId);
 

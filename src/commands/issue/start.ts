@@ -46,7 +46,7 @@ export default class IssueStart extends Command {
       .filter((state) => state.type === 'started')
       .sort((s1, s2) => (s1.position > s2.position ? 1 : -1))[0];
 
-    await this.linear.issueUpdate(currentIssue.identifier, {
+    await this.linear.updateIssue(currentIssue.identifier, {
       stateId: nextState.id,
       assigneeId: this.user.id,
     });

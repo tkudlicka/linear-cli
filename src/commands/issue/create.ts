@@ -49,7 +49,7 @@ export default class IssueCreate extends Command {
     ]);
 
     const spinner = ora('Creating issue').start();
-    const response = await this.linear.issueCreate({ teamId, title, description });
+    const response = await this.linear.createIssue({ teamId, title, description });
 
     spinner.stop();
 

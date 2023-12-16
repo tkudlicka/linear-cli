@@ -21,17 +21,13 @@ export default class IssueIndex extends Command {
 
   static args = issueArgs;
 
-  static examples = [
-    '$ lr issue LIN-14',
-    '$ lr issue LIN 14',
-    '$ lr issue 14 (looks in default team)',
-  ];
-
   static flags = {
     description: Flags.boolean({ char: 'd', description: 'Show issue description' }),
     comments: Flags.boolean({ char: 'c', description: 'Show issue comments' }),
     open: Flags.boolean({ char: 'o', description: 'Open issue in web browser' }),
     branch: Flags.boolean({ char: 'b', description: 'Show branch name' }),
+    project: Flags.boolean({ char: 'p', description: 'Show project name only' }),
+    url: Flags.boolean({ char: 'u', description: 'Show issue url' }),
   };
 
   renderIssueComments(issue: Issue) {
@@ -71,9 +67,14 @@ export default class IssueIndex extends Command {
     this.log(boxen(render.Markdown(markdown), boxenOptions));
   }
 
-  returnIssueBranch(issue: Issue) {
+  renderIssueBranch(issue: Issue) {
     const branchName = issue.branchName;
     this.log(branchName);
+  }
+
+  renderIssueProjcet(issue: Issue) {
+    const projectName = issue.project?.name;
+    this.log(projectName);
   }
 
   async run() {
@@ -84,26 +85,37 @@ export default class IssueIndex extends Command {
       withComments: flags.comments,
     });
 
+    if (Object.keys(flags).length === 0) {
+      return render.IssueCard(issue);
+    }
+
     if (flags.open) {
-      cli.open(issue.url);
-      return;
+      return cli.open(issue.url);
     }
 
     if (flags.comments) {
-      this.renderIssueComments(issue);
-      return;
+      return this.renderIssueComments(issue);
     }
 
     if (flags.description) {
-      this.renderIssueDescription(issue);
-      return;
+      return this.renderIssueDescription(issue);
     }
 
-    if (flags.branch) {
-      this.returnIssueBranch(issue);
-      return;
+    if (flags.url) {
+      return this.log(issue.url);
     }
 
-    render.IssueCard(issue);
+    for (const flag in flags) {
+      if (flags[flag as keyof typeof IssueIndex.flags]) {
+        switch (flag) {
+          case 'branch':
+            this.renderIssueBranch(issue);
+            break;
+          case 'project':
+            this.renderIssueProjcet(issue);
+            break;
+        }
+      }
+    }
   }
 }

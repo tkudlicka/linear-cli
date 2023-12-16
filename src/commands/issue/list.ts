@@ -82,8 +82,7 @@ export default class IssueList extends Command {
     if (!team) {
       this.log(`Did not find team with key "${teamId}"`);
       this.log(`Teams found in cache:\n-`, Object.keys(cache.teams).join('\n- '));
-      this.log(`You can try refreshing the cache with ${chalk.blue('lr cache:refresh')}`);
-      return;
+      return this.log(`You can try refreshing the cache with ${chalk.blue('lr cache:refresh')}`);
     }
 
     const match = team.states.find((state) =>
@@ -96,8 +95,7 @@ export default class IssueList extends Command {
         `Statuses for team ${teamId} found in cache:\n-`,
         team.states.map((state) => state.name).join('\n- ')
       );
-      this.log(`You can try refreshing the cache with ${chalk.blue('lr cache:refresh')}`);
-      return;
+      return this.log(`You can try refreshing the cache with ${chalk.blue('lr cache:refresh')}`);
     }
 
     const issues = await this.linear.query.issuesWithStatus(match?.id);
@@ -114,18 +112,15 @@ export default class IssueList extends Command {
     const { flags } = await this.parse(IssueList);
 
     if (flags.status) {
-      this.listIssuesWithStatus();
-      return;
+      return this.listIssuesWithStatus();
     }
 
     if (flags.mine) {
-      await this.listMyIssues();
-      return;
+      return await this.listMyIssues();
     }
 
     if (flags.all) {
-      this.listAllTeamIssues();
-      return;
+      return this.listAllTeamIssues();
     }
 
     this.listTeamIssues();
